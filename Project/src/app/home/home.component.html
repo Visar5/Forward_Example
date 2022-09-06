@@ -1,0 +1,81 @@
+<div class="mat-elevation-z0 outline">
+
+<form [formGroup]="ngForm" class="forma">
+
+    <mat-form-field class="fusha" appearance="outline">
+    <mat-label>Device name</mat-label>
+    <input matInput [formControlName]="'Device1'" name="Device2" [(ngModel)]="userObj.Device1">
+    </mat-form-field>
+
+
+    <mat-form-field class="fusha" appearance="outline" >
+      <mat-label>Device type</mat-label>
+      <mat-select [formControlName]="'Device2'"  id="Motivazione" [(ngModel)]="userObj.Device2">
+      <mat-option style="font-size:17px;" *ngFor="let motivazione of motivaziones" [value]="motivazione">{{motivazione}}</mat-option>
+    </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field class="fusha" appearance="outline">
+    <mat-label>Operating system</mat-label>
+    <input matInput [formControlName]="'Operating'" [(ngModel)]="userObj.Operating">
+    </mat-form-field>
+
+
+    <mat-form-field class="input-field" appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea [formControlName]="'Description'" appTextCount [(ngModel)]="userObj.Description" maxlength="400" matInput placeholder="Type your Messagio"></textarea>
+    </mat-form-field>
+
+
+    <mat-form-field class="fusha" appearance="outline">
+      <mat-label>Launch</mat-label>
+      <input matInput [matDatepicker]="picker" name="Launch" [formControlName]="'Launch'" [(ngModel)]="userObj.Launch" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field id="Motivazione" class="fusha" appearance="outline">
+      <mat-label *ngIf="(ngForm.value.Device2 !== 'Mobile phone' && ngForm.value.Device2 != 'Router'&& ngForm.value.Device2 != 'Laptop')">Custom</mat-label>
+      <mat-label *ngIf="ngForm.value.Device2 === 'Mobile phone'">Camera resolution</mat-label>
+      <mat-label *ngIf="ngForm.value.Device2 === 'Laptop'">RAM</mat-label>
+      <mat-label *ngIf="ngForm.value.Device2 === 'Router'">Coverage area</mat-label>
+      <input matInput [formControlName]="'Custom'" [(ngModel)]="userObj.Custom">
+    </mat-form-field>
+
+    <button mat-raised-button class="btn btn-primary" (click)="addUser(ngForm.value)" *ngIf="!isEdit">SUBMIT</button>
+    <button mat-raised-button class="btn btn-primary" (click)="updateUser()" *ngIf="isEdit">UPDATE</button>
+    </form>
+    </div>
+
+    <!-- Tabela e pasqyruar -->
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Device name</th>
+          <th scope="col">Device type</th>
+          <th scope="col">Operating system</th>
+          <th scope="col">Launch date</th>
+          <th scope="col-md8">Actions</th>
+        </tr>
+      </thead>
+    <tbody>
+    <tr *ngFor="let user of allUser" style="vertical-align: middle;">
+      <td>{{user.Device1}}</td>
+      <td>{{user.Device2}}</td>
+      <td>{{user.Operating}}</td>
+      <td>{{user.Launch |  date:'d/M/y'}}</td>
+      <td>
+      <div class="btn-group">
+      <button mat-stroked-button (click)="editUser(user)">Edit</button>
+      <button mat-stroked-button style="background-color:#b31e30 ;" (click)="deleteUser(user)">Delete</button>
+      <button mat-stroked-button style="background-color:#ffcc02 ;" (click)="onSelect(user)">View</button>
+      </div>
+     </td>
+
+    </tr>
+    </tbody>
+    </table>
+
+

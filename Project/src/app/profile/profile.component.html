@@ -1,0 +1,14 @@
+<mat-card class="mat-elevation-z0 outline" *ngIf="User">
+    <div class="title">DETAILS</div>
+              <table>
+              <td>
+              <h2><b>Device name :</b> {{User.Device1}}</h2> 
+              <h2><b>Device type :</b> {{User.Device2}} </h2>
+              <h2><b>Operating system :</b> {{User.Operating}}</h2>
+              <h2><b>Description :</b> {{User.Description}}</h2>
+              <h2><b>Launch :</b> {{User.Launch |  date:'d/M/y'}}</h2>
+              <h2><b>Custom</b> {{User.Custom}}</h2>
+              </td>
+              </table>
+              <button mat-flat-button routerLink="/home"> GO BACK</button>    
+</mat-card>

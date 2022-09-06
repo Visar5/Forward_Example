@@ -1,0 +1,102 @@
+.outline{
+    background: #fff;
+    margin: 0 auto;
+    width: 80%;
+    border: 2px solid transparent;
+    border-color: #cbcba9;
+    height: auto;
+    text-align: center;
+    border-radius: 5px !important;
+  }
+.example-spacer{
+  flex: 1 1 auto;
+}
+
+  
+  table{
+    margin: 20px auto;
+    width: 80%;
+    border-top: 4px solid #cbcba9;
+    border-left: 1px solid #cbcba9;
+    border-right: 1px solid #cbcba9;
+    border-bottom: 2px solid #cbcba9;
+
+}
+.btn-group button {
+    font-size: 15px;
+    margin: 5px auto;
+    line-height: 1.33333;
+    border-radius: 2px;
+    display: inline;
+    border:1px solid #aeb6d2;
+    vertical-align: middle;
+    text-align: center;
+}
+  
+    .mat-raised-button{
+      font-size: 16px;
+      text-align: center;
+      cursor: pointer;
+      font-weight: 500;
+      outline: none;
+      color: #004A4D;
+      background-color: #65DDE0;
+      border-color: #50d8dc;
+      border:1px solid #aeb6d2;
+      border-radius: 8px;
+      height: 55px;
+}
+.mat-stroked-button{
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 500;
+  outline: none;
+  font-family: Roboto;
+  color:#1b1a16;
+  background-color: #60af5a;
+  border:1px solid #aeb6d2;
+  border-radius: 10px;
+  height: 35px;
+}
+
+.container{
+  text-align: center;
+}
+    
+.mat-elevation-z0 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 150px;
+  max-width: 550px;
+  background: #fff;
+  width: 100%;
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 5px;
+}
+.forma {
+display: block;
+margin-left: auto;
+margin-right: auto;
+min-width: 150px;
+max-width: 500px;
+width: 95%;
+                    
+          
+.fusha,.input-field {
+width: 100%;
+color: #004526;
+}
+}
+
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}

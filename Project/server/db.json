@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "Device2": "Router",
+      "Device1": "laptop",
+      "Operating": "laptop",
+      "Description": "laptopi eshte ne gjendje te mire",
+      "Launch": "2021-11-04T23:00:00.000Z",
+      "Custom": "100px",
+      "id": 4
+    },
+    {
+      "Device2": "Router",
+      "Device1": "Asus",
+      "Operating": "Linux",
+      "Description": "Eshte i ri",
+      "Launch": "2021-11-04T23:00:00.000Z",
+      "Custom": "15Gb",
+      "id": 5
+    }
+  ]
+}
