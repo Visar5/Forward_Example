@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>{{title}}</h1>
+<div mat-dialog-content>{{description}}?</div>
+<div mat-dialog-actions>
+<!--  <button-->
+<!--    mat-button-->
+<!--    color="primary"-->
+<!--    [disabled]="loading"-->
+<!--    (click)="confirm()">{{confirmLabel}}</button>-->
+  <button
+    mat-button
+    color="primary"
+    (click)="closeDialog(true)">{{confirmLabel}}</button>
+<!--  <button-->
+<!--    mat-button-->
+<!--    color="warn"-->
+<!--    cdkFocusInitial-->
+<!--    [disabled]="loading"-->
+<!--    (click)="closeDialog()">{{rejectLabel}}</button>-->
+  <button
+    mat-button
+    color="warn"
+    cdkFocusInitial
+    (click)="closeDialog()">{{rejectLabel}}</button>
+</div>

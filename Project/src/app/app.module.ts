@@ -22,7 +22,7 @@ import { HomeComponent } from './home/home.component';
 import {MatTableModule} from '@angular/material/table';
 import { ToastrModule } from 'ngx-toastr';
 import { TextCountDirective } from './text-count.directive';
-
+import { DialogDeleteConfirmationComponent } from './shared/components/dialog-delete-confirmation/dialog-delete-confirmation.component';
 
 
 
@@ -32,7 +32,7 @@ import { TextCountDirective } from './text-count.directive';
     ProfileComponent,
     HomeComponent,
     TextCountDirective,
-
+    DialogDeleteConfirmationComponent
 
   ],
   imports: [

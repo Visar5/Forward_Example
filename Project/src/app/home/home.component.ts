@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../user.service';
+import {Devices} from '../core/models/devices'
+import { DialogDeleteConfirmationComponent, DialogDeleteConfirmationConfig } from '../shared/components/dialog-delete-confirmation/dialog-delete-confirmation.component';
+import { mapTo, switchMap, tap } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +18,7 @@ export class HomeComponent implements OnInit {
 
   public ngForm: FormGroup;
   value: string;
+  id: number;
   myModel: string = undefined;
   motivaziones = [
     'Mobile phone',
@@ -34,17 +40,18 @@ export class HomeComponent implements OnInit {
               private fb: FormBuilder,
               private toastr: ToastrService,
               private route: ActivatedRoute,
-              private router: Router)
+              private router: Router,
+              public dialog: MatDialog)
               {
-                
+
               }
 
   ngOnInit(){
     this.getLatestUser();
     this.createForm();
-  }  
-  
-  
+  }
+
+
   onSelect(user){
     this.router.navigate(['/profile', user.id]);
   }
@@ -59,7 +66,7 @@ updateUser(){
   this.getLatestUser();
   this.ngForm.reset();
   this.toastr.success('Device updated');
- 
+
   })
 }
 
@@ -84,7 +91,7 @@ updateUser(){
     this.ngForm.reset();
     this.toastr.success('Device Added');
   })
-      
+
   }
   getLatestUser(){
     this.userService.getAllUser().subscribe((response)=>{
@@ -92,10 +99,35 @@ updateUser(){
     })
   }
 
-  deleteUser(user){
-    this.userService.deleteUser(user).subscribe((response)=>{
-    this.getLatestUser();
-    })
-  }
 
+openDialog(device:Devices):void {
+  const { id, Device1} = device;
+
+
+this.dialog.open<DialogDeleteConfirmationComponent, DialogDeleteConfirmationConfig, boolean>(
+  DialogDeleteConfirmationComponent,
+  {
+    width: '30%',
+    data: {
+      description: `Do you want to delete ${Device1}`
+    }
+  }
+).afterClosed()
+.pipe(
+  switchMap(result =>
+    result
+    ? this.userService.deleteUser(id).pipe(mapTo(true))
+    : of(false)
+    ),
+    tap(
+      result => {
+        if (result) {
+          this.getLatestUser();
+          this.toastr.success('Device Added');
+        }
+      }
+    )
+    )
+    .subscribe();
+}
 }
